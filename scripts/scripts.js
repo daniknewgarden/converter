@@ -29,3 +29,23 @@
     $("select.resizeselect").resizeselect();
 
 })(jQuery, window);
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    const body = document.body;
+
+    function resizeSelect() {
+        let resizeSelect = document.querySelectorAll('.resizeselect'),
+            iconWidth = 30;
+
+        for (let i = 0; i < resizeSelect.length; i++) {
+            let width = resizeSelect[i].value,
+                length = width.length;
+            window.status = width;
+
+            resizeSelect[i].style.width = length*20 + iconWidth + 'px';
+        }
+    }
+
+    resizeSelect();
+
+});

@@ -91,4 +91,28 @@ a {
                 margin-top: 12px;
             }
     }
+    .add-currency {
+        display: flex;
+        align-items: center;
+        height: 56px;
+        border-top: 1px solid #222226;
+        padding: 0 23px;
+        font-size: 17px;
+        line-height: 24px;
+        color: #616166;
+            .plus-icon {
+                margin-right: 15px;
+            }
+    }
+}
+.footer {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        .footer-link {
+            font-size: 13px;
+            line-height: 24px;
+            color: #616166;
+        }
 }
