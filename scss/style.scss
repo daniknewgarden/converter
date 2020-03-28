@@ -22,7 +22,8 @@ a {
 .wrapper {
     max-width: 375px;
     margin: 0 auto;
-    padding: 7px ;
+    padding: 7px;
+    
 }
 
 .header {
@@ -59,6 +60,28 @@ a {
             color: $subtitle;
             margin: 0 0 12px 0;
         }
+        .result:after {
+            content: "";
+            display: block;
+            width: 5%;
+            padding-top: 20px;
+            border-bottom: 1px solid black;
+            transition: .5s;
+        }
+        .result {
+            font-size: 22px;
+            background-color: #161619;
+            color: $text;
+            padding-bottom: 5px;
+            border: none;
+            &:focus {
+                outline: none;
+            }
+            &:focus:after {
+                width: 100%;
+                border-bottom: 10px solid $border;
+            }
+        }
     }
     .currency {
         width: 100%;
@@ -88,7 +111,16 @@ a {
                     }
             }
             .result {
-                margin-top: 12px;
+                margin-top: 5px;
+                font-size: 22px;
+                background-color: #161619;
+                color: $text;
+                padding-bottom: 5px;
+                border: none;
+                    &:focus {
+                        outline: none;
+                        border-bottom: 2px solid $border;
+                    }
             }
     }
     .add-currency {
@@ -116,3 +148,39 @@ a {
             color: #616166;
         }
 }
+
+@media (min-width: 750px) {
+    * {
+        border: 1px solid red;
+    }
+    .wrapper {
+        max-width: 738px;
+    }
+    .header {
+        padding: 80px 0 0 0;
+            .subtitle {
+                font-size: 17px;
+                max-width: 560px;
+            }
+    }
+    .main {
+        height: 332px;
+        flex-direction: row;
+            .active-currency {
+                flex-basis: 50%;
+            }
+            .unactive-currency {
+                flex-basis: 50%;
+            }
+    }
+}
+
+// @keyframes border {
+//     form {
+//         border-bottom: 2px solid $border;
+//     }
+//     to {
+//         border-bottom: 2px solid $border;
+
+//     }
+// }

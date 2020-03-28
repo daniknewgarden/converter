@@ -59,6 +59,28 @@ a {
   color: #616166;
   margin: 0 0 12px 0;
 }
+.main .active-currency .result:after {
+  content: "";
+  display: block;
+  width: 5%;
+  padding-top: 20px;
+  border-bottom: 1px solid black;
+  transition: 0.5s;
+}
+.main .active-currency .result {
+  font-size: 22px;
+  background-color: #161619;
+  color: #DFDFE6;
+  padding-bottom: 5px;
+  border: none;
+}
+.main .active-currency .result:focus {
+  outline: none;
+}
+.main .active-currency .result:focus:after {
+  width: 100%;
+  border-bottom: 10px solid #222226;
+}
 .main .currency {
   width: 100%;
   padding: 16px 20px;
@@ -88,7 +110,16 @@ a {
   color: #616166;
 }
 .main .currency .result {
-  margin-top: 12px;
+  margin-top: 5px;
+  font-size: 22px;
+  background-color: #161619;
+  color: #DFDFE6;
+  padding-bottom: 5px;
+  border: none;
+}
+.main .currency .result:focus {
+  outline: none;
+  border-bottom: 2px solid #222226;
 }
 .main .add-currency {
   display: flex;
@@ -114,4 +145,33 @@ a {
   font-size: 13px;
   line-height: 24px;
   color: #616166;
+}
+
+@media (min-width: 750px) {
+  * {
+    border: 1px solid red;
+  }
+
+  .wrapper {
+    max-width: 738px;
+  }
+
+  .header {
+    padding: 80px 0 0 0;
+  }
+  .header .subtitle {
+    font-size: 17px;
+    max-width: 560px;
+  }
+
+  .main {
+    height: 332px;
+    flex-direction: row;
+  }
+  .main .active-currency {
+    flex-basis: 50%;
+  }
+  .main .unactive-currency {
+    flex-basis: 50%;
+  }
 }
