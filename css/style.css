@@ -47,6 +47,10 @@ a {
   color: var(--color-text);
 }
 
+button {
+  border: none;
+}
+
 .wrapper {
   max-width: 375px;
   margin: 0 auto;
@@ -69,6 +73,13 @@ a {
 .header .subtitle .link {
   padding-bottom: 5px;
   border-bottom: 1px solid var(--color-border);
+  transition: 0.3s all;
+}
+.header .subtitle .link:focus {
+  background-color: var(--color-border);
+  outline: none;
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .main {
@@ -82,7 +93,7 @@ a {
 .main .select {
   background-color: rgba(255, 255, 255, 0);
   background-image: url(../images/arrow-dark.svg);
-  background-position: calc(100% - 20px) calc(100% - 8px);
+  background-position: calc(100% - 20px) calc(100% - 12px);
   background-repeat: no-repeat;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -92,9 +103,16 @@ a {
   line-height: 24px;
   border: none;
   outline: none;
+  border-radius: 8px;
+  height: 32px;
+  transition: 0.3s all;
+  max-width: 190px;
 }
-.main .select:focus {
+.main .select:focus, .main .select:hover {
   outline: none;
+  background-color: var(--color-border);
+  background-position: calc(100% - 10px) calc(100% - 12px);
+  padding-left: 8px;
 }
 .main .select option {
   outline: none;
@@ -102,8 +120,22 @@ a {
   border: 1px solid var(--color-border);
   color: var(--color-label);
 }
+.main .remove {
+  width: 35px;
+  height: 35px;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 8px;
+  background-color: var(--color-surface-bg);
+  transition: 0.3s all;
+}
+.main .remove:focus, .main .remove:hover {
+  background-color: var(--color-border);
+  outline: none;
+}
 .main .result-wrapper {
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   transition: 0.2s;
   font-size: 22px;
@@ -118,6 +150,9 @@ a {
   border: none;
   outline: none;
 }
+.main .result-wrapper .result::selection {
+  color: var(--color-label);
+}
 .main .active-currency {
   height: 128px;
   padding: 16px 20px;
@@ -129,6 +164,13 @@ a {
   width: 100%;
   padding: 16px 20px;
   height: 92px;
+  max-width: 99.75%;
+  transition: 0.3s all;
+}
+.main .currency .select-currency {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .main .add-currency {
   display: flex;
@@ -144,6 +186,10 @@ a {
   color: var(--color-label);
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface-bg);
+  transition: 0.3s all;
+}
+.main .add-currency:focus {
+  background-color: var(--color-border);
 }
 .main .add-currency .plus-icon {
   margin-right: 15px;
@@ -161,10 +207,20 @@ a {
   line-height: 24px;
   color: var(--color-label);
 }
+.footer .footer-link:focus {
+  outline: none;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: var(--color-border);
+}
 
 @media (min-width: 750px) {
   .wrapper {
     max-width: 738px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
   }
 
   .header {
@@ -177,17 +233,28 @@ a {
 
   .main {
     margin-top: 80px;
-    height: 332px;
     flex-direction: row;
   }
   .main .active-currency {
     flex-basis: 50%;
   }
   .main .unactive-currency {
+    border-left: 1px solid var(--color-border);
     flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .main .add-currency {
+    border-radius: 0 0 12px 0;
+    max-width: 358px;
+    max-height: 54px;
   }
 
   .footer {
     margin: 140px 0 24px 0;
   }
+}
+.hide {
+  height: 0 !important;
 }

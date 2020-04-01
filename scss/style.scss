@@ -74,6 +74,10 @@ a {
     color: var(--color-text);
 }
 
+button {
+    border: none;
+}
+
 .wrapper {
     max-width: 375px;
     margin: 0 auto;
@@ -94,6 +98,13 @@ a {
             .link {
                 padding-bottom: 5px;
                 border-bottom: 1px solid var(--color-border);
+                transition: .3s all;
+                &:focus {
+                    background-color: var(--color-border);
+                    outline: none;
+                    padding: 8px;
+                    border-radius: 8px;
+                }
             }
     }
 }
@@ -107,7 +118,7 @@ a {
     .select {
         background-color: rgba(255, 255, 255, 0);
         background-image: url(../images/arrow-dark.svg);
-        background-position: calc(100% - 20px) calc(100% - 8px);
+        background-position: calc(100% - 20px) calc(100% - 12px);
         background-repeat: no-repeat;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -117,22 +128,40 @@ a {
         line-height: 24px;
         border: none;
         outline: none;
-
-        &:focus {
+        border-radius: 8px;
+        height: 32px;
+        transition: .3s all;
+        max-width: 190px;
+        &:focus, &:hover {
             outline: none;
+            background-color: var(--color-border);
+            background-position: calc(100% - 10px) calc(100% - 12px);
+            padding-left: 8px;
         }
 
         option {
             outline: none;
-
             padding-left: 10px;
             border: 1px solid var(--color-border);
             color: var(--color-label);
         }
     }
-
+    .remove {
+        width: 35px;
+        height: 35px;
+        display: inline-flex;
+        justify-content: center;
+        align-content: center;
+        border-radius: 8px;
+        background-color: var(--color-surface-bg);
+        transition: .3s all;
+            &:focus, &:hover {
+                background-color: var(--color-border);
+                outline: none;
+            }
+    }
     .result-wrapper {
-        margin-top: 10px;
+        margin-top: 5px;
         display: flex;
         transition: .2s;
         font-size: 22px;
@@ -146,6 +175,9 @@ a {
             color: var(--color-text);
             border: none;
             outline: none;
+                &::selection {
+                    color: var(--color-label);
+                }
         }
     }
     .active-currency {
@@ -159,7 +191,14 @@ a {
         width: 100%;
         padding: 16px 20px;
         height: 92px;
+        max-width: 99.75%;
+        transition: .3s all;
+        .select-currency {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+    }
     .add-currency {
         display: flex;
         align-items: center;
@@ -174,6 +213,10 @@ a {
         color: var(--color-label);
         border-top: 1px solid var(--color-border);
         background-color: var(--color-surface-bg);
+        transition: .3s all;
+        &:focus {
+            background-color: var(--color-border);
+        }
             .plus-icon {
                 margin-right: 15px;
             }
@@ -187,14 +230,24 @@ a {
     align-items: center;
         .footer-link {
             font-size: 13px;
-            line-height: 24px;
+            line-height: 24px;  
             color: var(--color-label);
+                &:focus {
+                    outline: none;
+                    border-radius: 8px;
+                    padding: 10px;
+                    background-color: var(--color-border);
+                }
         }
 }
 
 @media (min-width: 750px) {
     .wrapper {
         max-width: 738px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
     }
     .header {
         padding: 80px 0 0 0;
@@ -205,16 +258,29 @@ a {
     }
     .main {
         margin-top: 80px;
-        height: 332px;
+        
         flex-direction: row;
             .active-currency {
                 flex-basis: 50%;
             }
             .unactive-currency {
+                border-left: 1px solid var(--color-border);
                 flex-basis: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+            .add-currency {
+                border-radius: 0 0 12px 0;
+                max-width: 358px;
+                max-height: 54px;
             }
     }
     .footer {
         margin: 140px 0 24px 0;
     }
+}
+
+.hide {
+    height: 0!important;
 }
