@@ -17,6 +17,18 @@ html.theme-in-transition *:after {
   --color-surface-bg: #ffffff;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0B0B0D;
+    --color-text: #DFDFE6;
+    --color-label: #616166;
+    --color-border: #222226;
+    --color-surface-bg: #161619;
+  }
+  :root .logo {
+    filter: invert(100%);
+  }
+}
 html[data-theme=dark] {
   --color-bg: #0B0B0D;
   --color-text: #DFDFE6;

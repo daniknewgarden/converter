@@ -25,26 +25,26 @@ html.theme-in-transition *:after {
     --color-surface-bg: #ffffff;
 }
 
-// @media (prefers-color-scheme: dark) {
-//     :root {
-//         // Body background color
-//         --color-bg: #0B0B0D;
+@media (prefers-color-scheme: dark) {
+    :root {
+        // Body background color
+        --color-bg: #0B0B0D;
 
-//         // Text color
-//         --color-text: #DFDFE6;
-//         --color-label: #616166;
+        // Text color
+        --color-text: #DFDFE6;
+        --color-label: #616166;
 
-//         // Border color
-//         --color-border: #222226;
+        // Border color
+        --color-border: #222226;
 
-//         // Main section background
-//         --color-surface-bg: #161619;
+        // Main section background
+        --color-surface-bg: #161619;
 
-//         .logo {
-//             filter: invert(100%);
-//         }
-//     }
-// }
+        .logo {
+            filter: invert(100%);
+        }
+    }
+}
 
 html[data-theme='dark'] {
 
