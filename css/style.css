@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+html.theme-in-transition,
+html.theme-in-transition *,
+html.theme-in-transition *:before,
+html.theme-in-transition *:after {
+  transition: all 0.5s !important;
+}
+
 :root {
   --color-bg: #fafafa;
   --color-text: #0B0B0D;
@@ -10,18 +17,6 @@
   --color-surface-bg: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0B0B0D;
-    --color-text: #DFDFE6;
-    --color-label: #616166;
-    --color-border: #222226;
-    --color-surface-bg: #161619;
-  }
-  :root .logo {
-    filter: invert(100%);
-  }
-}
 html[data-theme=dark] {
   --color-bg: #0B0B0D;
   --color-text: #DFDFE6;
@@ -86,9 +81,11 @@ button {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   background-color: var(--color-surface-bg);
   border-radius: 12px;
   border: 1px solid var(--color-border);
+  transition: height 0.75s all;
 }
 .main .select {
   background-color: rgba(255, 255, 255, 0);
@@ -156,6 +153,7 @@ button {
 .main .active-currency {
   height: 128px;
   padding: 16px 20px;
+  transition: height 0.3s all;
 }
 .main .currency:not(:first-child) {
   border-top: 1px solid var(--color-border);
@@ -165,7 +163,19 @@ button {
   padding: 16px 20px;
   height: 92px;
   max-width: 99.75%;
-  transition: 0.3s all;
+  transition: 0.5s all;
+}
+.main .currency.none {
+  display: none;
+}
+.main .currency.hide {
+  height: 0px;
+  padding: 0;
+}
+.main .currency.hide .form, .main .currency.hide .select, .main .currency.hide .result-wrapper, .main .currency.hide .remove {
+  opacity: 0;
+  height: 0px !important;
+  padding: 0;
 }
 .main .currency .select-currency {
   display: flex;
@@ -187,6 +197,11 @@ button {
   border-top: 1px solid var(--color-border);
   background-color: var(--color-surface-bg);
   transition: 0.3s all;
+}
+.main .add-currency.border {
+  border: none;
+  border-radius: 0 12px 12px 12px;
+  height: 100vh;
 }
 .main .add-currency:focus {
   background-color: var(--color-border);
@@ -233,7 +248,6 @@ button {
 
   .main {
     margin-top: 80px;
-    height: 460px;
     flex-direction: row;
   }
   .main .active-currency {

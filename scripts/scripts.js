@@ -1,26 +1,53 @@
 window.addEventListener('DOMContentLoaded', function () {
-
     class currency {
-        
-    }
-    
-    function currencyControl() {
 
-        let currency = document.querySelectorAll('.currency'),
-            removeBtn = document.querySelectorAll('.currency');
+        constructor(name) {
+            this.name = name;
+        }
 
-            function remove() {
-                for (let i = 0; i < currency.length; i++) {
-                    currency[0].classList.add('hide');
-                }
+        create(type) {
+
+            this.type = type;
+
+            let wrapper = document.querySelector(`.${this.type}-currency`),
+                currency = document.querySelector('.currency').innerHTML,
+                newCurrency = document.createElement('div');
+
+            newCurrency.classList.add('currency');
+            newCurrency.innerHTML = currency;
+            wrapper.prepend(newCurrency);
+
+        }
+
+        remove(btn) {
+            this.btn = btn;
+        }
+
+        select() {
+
+        }
+
+        active(active) {
+
+            this.active = active;
+
+            if (active === true) {
+                console.log('true');
+            }   else {
+                console.log('false');
             }
-            for (let i = 0; i < removeBtn.length; i++) {
-                removeBtn[0].addEventListener('click', remove());
-            }
-            
+
+        }
+
+        enterNum() {
+
+        }
     }
 
-    currencyControl();
+    let addBtn = document.querySelector('.add-currency');
 
-
+    addBtn.addEventListener('click', function () {
+        let e = new currency('USD');
+        e.create('unactive');
+    })
 });

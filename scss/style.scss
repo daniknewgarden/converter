@@ -3,6 +3,13 @@
     box-sizing: border-box;
 }
 
+html.theme-in-transition,
+html.theme-in-transition *,
+html.theme-in-transition *:before,
+html.theme-in-transition *:after {
+    transition: all .5s !important;
+}
+
 :root {
     // Body background color
     --color-bg: #fafafa;
@@ -18,26 +25,26 @@
     --color-surface-bg: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        // Body background color
-        --color-bg: #0B0B0D;
+// @media (prefers-color-scheme: dark) {
+//     :root {
+//         // Body background color
+//         --color-bg: #0B0B0D;
 
-        // Text color
-        --color-text: #DFDFE6;
-        --color-label: #616166;
+//         // Text color
+//         --color-text: #DFDFE6;
+//         --color-label: #616166;
 
-        // Border color
-        --color-border: #222226;
+//         // Border color
+//         --color-border: #222226;
 
-        // Main section background
-        --color-surface-bg: #161619;
+//         // Main section background
+//         --color-surface-bg: #161619;
 
-        .logo {
-            filter: invert(100%);
-        }
-    }
-}
+//         .logo {
+//             filter: invert(100%);
+//         }
+//     }
+// }
 
 html[data-theme='dark'] {
 
@@ -112,9 +119,11 @@ button {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     background-color: var(--color-surface-bg);
     border-radius: 12px;
     border: 1px solid var(--color-border);
+    transition: height .75s all;
     .select {
         background-color: rgba(255, 255, 255, 0);
         background-image: url(../images/arrow-dark.svg);
@@ -183,6 +192,7 @@ button {
     .active-currency {
         height: 128px;
         padding: 16px 20px;
+        transition: height .3s all;
     }
     .currency:not(:first-child) {
         border-top: 1px solid var(--color-border);
@@ -192,7 +202,19 @@ button {
         padding: 16px 20px;
         height: 92px;
         max-width: 99.75%;
-        transition: .3s all;
+        transition: .5s all;
+        &.none{
+            display: none;
+        }
+        &.hide {
+            height: 0px;
+            padding: 0;
+            .form, .select, .result-wrapper, .remove {
+                opacity: 0;
+                height: 0px!important;
+                padding: 0;
+            }
+        }
         .select-currency {
             display: flex;
             align-items: center;
@@ -214,6 +236,11 @@ button {
         border-top: 1px solid var(--color-border);
         background-color: var(--color-surface-bg);
         transition: .3s all;
+        &.border {
+            border: none;
+            border-radius: 0 12px 12px 12px;
+            height: 100vh;
+        }
         &:focus {
             background-color: var(--color-border);
         }
@@ -258,7 +285,6 @@ button {
     }
     .main {
         margin-top: 80px;
-        height: 460px;
         flex-direction: row;
             .active-currency {
                 flex-basis: 50%;
