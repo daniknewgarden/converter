@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        fetch("https://fixer-fixer-currency-v1.p.rapidapi.com/symbols", {
+        "headers": {
+        "x-rapidapi-host": "fixer-fixer-currency-v1.p.rapidapi.com",
+        "x-rapidapi-key": "118b5f6cb8msh8bfc938d6489e18p12c8bcjsn70a4e2fb7d26"
+        },
+        "method": "GET"
+        })
+        .then(response => {
+        console.log(response);
+        })
+        .catch(err => {
+        console.log(err);
+        });
+    </script>
+</body>
+</html>

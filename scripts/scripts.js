@@ -11,15 +11,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
             function remove() {
                 for (let i = 0; i < currency.length; i++) {
-                    currency[i].classList.add('hide');
+                    currency[0].classList.add('hide');
                 }
             }
             for (let i = 0; i < removeBtn.length; i++) {
-                removeBtn[i].addEventListener('click', remove);
+                removeBtn[0].addEventListener('click', remove());
             }
             
     }
 
     currencyControl();
+
 
 });

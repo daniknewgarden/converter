@@ -233,6 +233,7 @@ button {
 
   .main {
     margin-top: 80px;
+    height: 460px;
     flex-direction: row;
   }
   .main .active-currency {
@@ -254,7 +255,4 @@ button {
   .footer {
     margin: 140px 0 24px 0;
   }
-}
-.hide {
-  height: 0 !important;
 }
