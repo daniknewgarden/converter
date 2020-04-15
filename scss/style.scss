@@ -124,37 +124,43 @@ button {
     border-radius: 12px;
     border: 1px solid var(--color-border);
     transition: height .75s all;
-    .select {
-        background-color: rgba(255, 255, 255, 0);
-        background-image: url(../images/arrow-dark.svg);
-        background-position: calc(100% - 20px) calc(100% - 12px);
-        background-repeat: no-repeat;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        color: var(--color-label);
-        font-weight: normal;
-        font-size: 17px;
-        line-height: 24px;
-        border: none;
-        outline: none;
-        border-radius: 8px;
-        height: 32px;
-        transition: .3s all;
-        max-width: 190px;
-        &:focus, &:hover {
-            outline: none;
-            background-color: var(--color-border);
-            background-position: calc(100% - 10px) calc(100% - 12px);
-            padding-left: 8px;
-        }
-
-        option {
-            outline: none;
-            padding-left: 10px;
-            border: 1px solid var(--color-border);
+    // .dcurrency{
+        .select {
+            background-color: rgba(255, 255, 255, 0);
+            background-image: url(../images/arrow-dark.svg);
+            background-position: calc(100% - 20px) calc(100% - 12px);
+            background-repeat: no-repeat;
+            -webkit-appearance: none;
+            -moz-appearance: none;
             color: var(--color-label);
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 24px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            height: 32px;
+            transition: .3s all;
+            max-width: 190px;
+
+            &:focus,
+            &:hover {
+                outline: none;
+                background-color: var(--color-border);
+                background-position: calc(100% - 10px) calc(100% - 12px);
+                padding-left: 8px;
+            }
+
+            option {
+                outline: none;
+                padding-left: 10px;
+                border: 1px solid var(--color-border);
+                color: var(--color-label);
+            &:focus,
+                
+            }
         }
-    }
+    
     .remove {
         width: 35px;
         height: 35px;
