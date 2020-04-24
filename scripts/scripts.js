@@ -1,26 +1,44 @@
 window.addEventListener('DOMContentLoaded', function () {
-    class currency {
+    class Currency {
 
-        constructor(name) {
+        constructor(name, type) {
             this.name = name;
-        }
-
-        create(type) {
-
             this.type = type;
 
-            let wrapper = document.querySelector(`.${this.type}-currency`),
-                currency = document.querySelector('.currency').innerHTML,
+            const wrapper = document.querySelector(`.${this.type}-currency`),
+                currencyDOM = document.querySelector('.base-currency').innerHTML,
                 newCurrency = document.createElement('div');
 
             newCurrency.classList.add('currency');
-            newCurrency.innerHTML = currency;
+            newCurrency.innerHTML = currencyDOM;
             wrapper.prepend(newCurrency);
+            
+            changeContentHeigth();
 
+            setTimeout(() => {
+                newCurrency.classList.add('visible');
+            }, 100);
+
+            this.createdCurrency = newCurrency;
         }
 
-        remove(btn) {
-            this.btn = btn;
+        remove(canRemove) {
+            
+            const removeBtn = this.createdCurrency.querySelector('.remove'),
+                  currency = this.createdCurrency;
+
+            if (canRemove === true) {
+                removeBtn.addEventListener('click', function () {
+                    currency.classList.remove('visible');
+                    setTimeout(() => {
+                        currency.remove(currency);
+                    }, 200);
+                });  
+            } else {
+                removeBtn.classList.add('hidden');
+            }
+
+            changeContentHeigth();
         }
 
         select() {
@@ -29,14 +47,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         active(active) {
 
-            this.active = active;
-
-            if (active === true) {
-                console.log('true');
-            }   else {
-                console.log('false');
-            }
-
         }
 
         enterNum() {
@@ -44,10 +54,45 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    let addBtn = document.querySelector('.add-currency');
+    function changeContentHeigth() {
+
+        let currencyNum = document.querySelectorAll('.currency').length,
+            content = document.querySelector('.unactive-currency'),
+            heigth = content.querySelector('.currency').clientHeight;
+
+        content.style.height = heigth * currencyNum + 54 + 'px';
+
+    }
+
+    function createCurrency() {
+        let currency = new Currency('USD',  'unactive');
+        changeContentHeigth();
+
+        function checkCurrencyNum() {
+            let currencyNum = document.querySelectorAll('.currency').length;
+
+            if (currencyNum == 1) {
+                return false;
+            } else {
+                return true;
+            }
+
+        } 
+
+        currency.remove(checkCurrencyNum());
+
+    }
+
+    const addBtn = document.querySelector('.add-currency');
 
     addBtn.addEventListener('click', function () {
-        let e = new currency('USD');
-        e.create('unactive');
-    })
+        createCurrency();
+    });
+
+    let currency = new Currency('USD', 'unactive');
+    changeContentHeigth();
+
+
 });
+
+
